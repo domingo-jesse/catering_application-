@@ -168,55 +168,104 @@ def inject_styles() -> None:
     st.markdown(
         """
         <style>
-            .main {background: linear-gradient(180deg, #fffdf8 0%, #fff9f1 100%);}
+            :root {
+                --olive-ink: #1f355f;
+                --olive-ink-soft: #455a7f;
+                --olive-accent: #6ea9f9;
+                --olive-card: #ffffff;
+                --olive-border: #d9e2f2;
+            }
+            .stApp {
+                background:
+                    radial-gradient(circle at 10% 0%, rgba(194, 221, 255, 0.38) 0%, rgba(194, 221, 255, 0) 42%),
+                    linear-gradient(180deg, #f8fbff 0%, #f5f8ff 52%, #f9f6ff 100%);
+            }
+            .block-container {
+                padding-top: 1.5rem;
+                padding-bottom: 2.5rem;
+            }
             .hero {
-                padding: 1.5rem 1.8rem;
-                border-radius: 20px;
-                background: linear-gradient(120deg, #fdf4ff 0%, #eef7ff 100%);
-                color: #1f2a44;
-                box-shadow: 0 8px 24px rgba(31, 42, 68, 0.12);
-                margin-bottom: 1rem;
+                padding: 1.6rem 1.9rem;
+                border-radius: 24px;
+                background: linear-gradient(120deg, #f2f5ff 0%, #ecf7ff 56%, #ecfbff 100%);
+                border: 1px solid rgba(144, 175, 218, 0.35);
+                color: var(--olive-ink);
+                box-shadow: 0 10px 28px rgba(39, 70, 117, 0.12);
+                margin-bottom: 1.2rem;
             }
             .hero h1 {
                 margin: 0;
-                font-size: 2rem;
-                letter-spacing: 0.4px;
+                font-size: clamp(1.9rem, 2.6vw, 2.4rem);
+                letter-spacing: 0.2px;
                 display: inline-block;
-                padding: 0.2rem 0.7rem;
-                border-radius: 12px;
-                background: linear-gradient(90deg, #dbeafe 0%, #bfdbfe 55%, #93c5fd 100%);
-                color: #1e3a8a;
-                box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+                padding: 0.24rem 0.86rem;
+                border-radius: 14px;
+                background: linear-gradient(90deg, #d7e7ff 0%, #bfddff 56%, #9bcbff 100%);
+                color: #1e428d;
+                box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.45);
             }
-            .hero p {margin: 0.45rem 0 0; opacity: 0.95;}
+            .hero p {
+                margin: 0.58rem 0 0;
+                color: var(--olive-ink-soft);
+                font-size: 1.08rem;
+            }
+            [data-testid="stVerticalBlock"] > [data-testid="stElementContainer"] .stTextInput label,
+            [data-testid="stVerticalBlock"] > [data-testid="stElementContainer"] .stNumberInput label,
+            [data-testid="stVerticalBlock"] > [data-testid="stElementContainer"] .stTextArea label {
+                font-weight: 600;
+                color: #324d79;
+            }
+            [data-testid="stTextInput"] input,
+            [data-testid="stNumberInput"] input,
+            [data-testid="stTextArea"] textarea {
+                border-radius: 12px;
+                border: 1px solid #cfdcf2;
+                background: #fbfdff;
+            }
+            .stButton > button {
+                border-radius: 12px;
+                border: 1px solid #c9daf8;
+                font-weight: 650;
+            }
+            .stButton > button[kind="primary"] {
+                background: linear-gradient(90deg, #4f8df3 0%, #6aaaf8 100%);
+                border: none;
+            }
+            [data-testid="stMetric"] {
+                background: #f7fbff;
+                border: 1px solid var(--olive-border);
+                border-radius: 14px;
+                padding: 0.5rem 0.75rem;
+            }
             .menu-card {
-                background: #ffffff;
-                border-radius: 18px;
+                background: var(--olive-card);
+                border-radius: 20px;
                 padding: 1.25rem;
-                border: 1px solid #f1e2d2;
-                box-shadow: 0 8px 20px rgba(117, 79, 46, 0.10);
+                border: 1px solid var(--olive-border);
+                box-shadow: 0 10px 24px rgba(32, 58, 108, 0.09);
                 margin: 1rem 0;
             }
-            .menu-title {font-size: 1.35rem; font-weight: 700; color: #4b2e2e; margin-bottom: 0.25rem;}
-            .menu-theme {font-size: 0.95rem; color: #8a5a35; margin-bottom: 0.85rem;}
+            .menu-title {font-size: 1.35rem; font-weight: 750; color: #203a6c; margin-bottom: 0.3rem;}
+            .menu-theme {font-size: 0.96rem; color: #516b95; margin-bottom: 0.9rem;}
             .chip {
                 display: inline-block;
                 padding: 0.3rem 0.55rem;
                 border-radius: 999px;
                 margin: 0.2rem 0.35rem 0.2rem 0;
-                background: #fdf0e3;
-                border: 1px solid #f1d2b5;
-                color: #6d3f19;
+                background: #edf5ff;
+                border: 1px solid #ccdef8;
+                color: #2b4f8f;
                 font-size: 0.85rem;
             }
-            .divider {height: 1px; background: #f0dfcd; margin: 0.95rem 0 0.85rem;}
-            .section-heading {font-weight: 650; color: #5a3518; margin: 0.3rem 0 0.55rem;}
+            .divider {height: 1px; background: #e0e9f7; margin: 0.95rem 0 0.85rem;}
+            .section-heading {font-weight: 700; color: #2a4c86; margin: 0.4rem 0 0.55rem;}
             .footer-note {
                 margin-top: 1.4rem;
                 padding: 0.9rem 1rem;
-                background: #fff5e9;
+                background: #f4f8ff;
                 border-radius: 12px;
-                border: 1px solid #f1dcc4;
+                border: 1px solid #d8e4f8;
+                color: #2f4f83;
             }
         </style>
         """,
