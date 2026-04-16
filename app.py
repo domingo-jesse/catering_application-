@@ -177,7 +177,16 @@ def inject_styles() -> None:
                 box-shadow: 0 8px 24px rgba(38, 20, 8, 0.20);
                 margin-bottom: 1rem;
             }
-            .hero h1 {margin: 0; font-size: 2rem; letter-spacing: 0.4px;}
+            .hero h1 {
+                margin: 0;
+                font-size: 2rem;
+                letter-spacing: 0.4px;
+                background: linear-gradient(90deg, #ff8fd1 0%, #ff5bb8 50%, #ff2fa5 100%);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+                color: transparent;
+            }
             .hero p {margin: 0.45rem 0 0; opacity: 0.95;}
             .menu-card {
                 background: #ffffff;
@@ -258,13 +267,13 @@ def render_menu_card(menu: Dict[str, Any], idx: int) -> None:
 
 
 def app() -> None:
-    st.set_page_config(page_title="CaterCraft AI", page_icon="🍽️", layout="wide")
+    st.set_page_config(page_title="Catering with Olive", page_icon="🍽️", layout="wide")
     inject_styles()
 
     st.markdown(
         """
         <div class="hero">
-            <h1>🍽️ CaterCraft AI</h1>
+            <h1>🍽️ Catering with Olive</h1>
             <p>Premium catering menu concepts tailored to your event goals, budget, and guest profile.</p>
         </div>
         """,
