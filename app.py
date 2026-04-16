@@ -181,11 +181,12 @@ def inject_styles() -> None:
                 margin: 0;
                 font-size: 2rem;
                 letter-spacing: 0.4px;
-                background: linear-gradient(90deg, #ff8fd1 0%, #ff5bb8 50%, #ff2fa5 100%);
-                -webkit-background-clip: text;
-                background-clip: text;
-                -webkit-text-fill-color: transparent;
-                color: transparent;
+                display: inline-block;
+                padding: 0.2rem 0.7rem;
+                border-radius: 12px;
+                background: linear-gradient(90deg, #ffb1df 0%, #ff8bd0 55%, #ff70c4 100%);
+                color: #3d2331;
+                box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
             }
             .hero p {margin: 0.45rem 0 0; opacity: 0.95;}
             .menu-card {
