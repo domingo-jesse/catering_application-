@@ -172,9 +172,9 @@ def inject_styles() -> None:
             .hero {
                 padding: 1.5rem 1.8rem;
                 border-radius: 20px;
-                background: linear-gradient(120deg, #4b2e2e 0%, #7a4e2f 100%);
-                color: #fff;
-                box-shadow: 0 8px 24px rgba(38, 20, 8, 0.20);
+                background: linear-gradient(120deg, #fdf4ff 0%, #eef7ff 100%);
+                color: #1f2a44;
+                box-shadow: 0 8px 24px rgba(31, 42, 68, 0.12);
                 margin-bottom: 1rem;
             }
             .hero h1 {
