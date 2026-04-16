@@ -17,7 +17,6 @@ from typing import Any, Dict, List
 from urllib.parse import quote_plus
 
 import streamlit as st
-from openai import OpenAI
 
 
 def load_api_key() -> str | None:
@@ -134,7 +133,19 @@ def generate_recipe_search_link(dish_name: str) -> str:
     return f"https://www.google.com/search?q={query}"
 
 
-def call_openai_for_menus(client: OpenAI, prompt: str) -> Dict[str, Any]:
+def get_openai_client(api_key: str):
+    """Create an OpenAI client while handling missing SDK dependency."""
+    try:
+        from openai import OpenAI
+    except ModuleNotFoundError as exc:
+        raise ModuleNotFoundError(
+            "The `openai` package is not installed. Add `openai` to your dependencies."
+        ) from exc
+
+    return OpenAI(api_key=api_key)
+
+
+def call_openai_for_menus(client: Any, prompt: str) -> Dict[str, Any]:
     response = client.responses.create(
         model="gpt-4.1",
         input=[
@@ -312,7 +323,12 @@ def app() -> None:
             vibe=vibe,
         )
 
-        client = OpenAI(api_key=api_key)
+        try:
+            client = get_openai_client(api_key=api_key)
+        except ModuleNotFoundError as exc:
+            st.error(str(exc))
+            st.info("Install with: `pip install openai` and restart the app.")
+            st.stop()
 
         with st.spinner("Designing premium menu concepts..."):
             try:
